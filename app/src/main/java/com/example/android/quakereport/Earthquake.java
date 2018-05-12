@@ -7,49 +7,49 @@ package com.example.android.quakereport;
 public class Earthquake {
 
     // The magnitude of earthquake, the place where there was it and the date of event.
-    private String mEarthquakeMagnitude;
-    private String mEarthquakePlace;
-    private String mEarthquakeDate;
+    private String mMagnitude;
+    private String mPlace;
+    private String mDate;
 
     /**
      * Create new {@link Earthquake} object.
-     * @param earthquakeMagnitude is the magnitude of earthquake.
-     * @param earthquakePlace is the place where there was it.
-     * @param earthquakeDate is the date of event.
+     * @param magnitude is the magnitude of earthquake.
+     * @param place is the place where there was it.
+     * @param date is the date of event.
      */
-    public Earthquake(String earthquakeMagnitude, String earthquakePlace, String earthquakeDate) {
-        mEarthquakeMagnitude = earthquakeMagnitude;
-        mEarthquakePlace = earthquakePlace;
-        mEarthquakeDate = earthquakeDate;
+    public Earthquake(String magnitude, String place, String date) {
+        mMagnitude = magnitude;
+        mPlace = place;
+        mDate = date;
     }
 
     // Get the magnitude of earthquake.
-    public String getEarthquakeMagnitude() {
-        return mEarthquakeMagnitude;
+    public String getMagnitude() {
+        return mMagnitude;
     }
 
     // Get the name of place where there was it.
-    public String getEarthquakePlace() {
-        return mEarthquakePlace;
+    public String getPlace() {
+        return mPlace;
     }
 
     // Get the date of event.
-    public String getEarthquakeDate() {
-        return mEarthquakeDate;
+    public String getDate() {
+        return mDate;
     }
 
     // Set the magnitude of earthquake.
-    public void setEarthquakeMagnitude(String earthquakeMagnitude) {
-        mEarthquakeMagnitude = earthquakeMagnitude;
+    public void setMagnitude(String magnitude) {
+        mMagnitude = magnitude;
     }
 
     // Set the name of place where there was it.
-    public void setEarthquakePlace(String earthquakePlace) {
-        mEarthquakePlace = earthquakePlace;
+    public void setPlace(String place) {
+        mPlace = place;
     }
 
     // Set the name of place where there was it.
-    public void setEarthquakeDate(String earthquakeDate) {
-        mEarthquakeDate = earthquakeDate;
+    public void setDate(String date) {
+        mDate = date;
     }
 }
