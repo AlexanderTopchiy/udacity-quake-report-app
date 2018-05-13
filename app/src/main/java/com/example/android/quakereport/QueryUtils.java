@@ -60,7 +60,7 @@ public final class QueryUtils {
                 // Extract “mag”, "place", "time"
                 String magnitude = properties.getString("mag");
                 String place = properties.getString("place");
-                String time = properties.getString("time");
+                long time = properties.getLong("time");
                 // Create Earthquake java object from magnitude, location, and time
                 Earthquake earthquake = new Earthquake(magnitude, place, time);
                 // Add earthquake to list of earthquakes

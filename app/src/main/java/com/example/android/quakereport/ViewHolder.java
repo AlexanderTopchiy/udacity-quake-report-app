@@ -12,4 +12,5 @@ public class ViewHolder {
     public TextView magnitudeTextView;
     public TextView placeTextView;
     public TextView dateTextView;
+    public TextView timeTextView;
 }
