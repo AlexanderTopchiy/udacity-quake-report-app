@@ -20,6 +20,10 @@ import java.util.ArrayList;
  */
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
+    // Constant what using to separate offset and primary locations.
+    private static final String LOCATION_SEPARATOR = " of ";
+
+
     /**
      * Create a new {@link EarthquakeAdapter} object.
      * @param context is the current context (i.e. Activity) that the adapter is being created in.
@@ -50,7 +54,8 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
                     .inflate(R.layout.earthquake_list_item, parent, false);
             holder = new ViewHolder();
             holder.magnitudeTextView = convertView.findViewById(R.id.magnitude);
-            holder.placeTextView = convertView.findViewById(R.id.place);
+            holder.locationOffsetTextView = convertView.findViewById(R.id.location_offset);
+            holder.primaryLocationTextView = convertView.findViewById(R.id.primary_location);
             holder.dateTextView = convertView.findViewById(R.id.date);
             holder.timeTextView = convertView.findViewById(R.id.time);
             convertView.setTag(holder);
@@ -61,16 +66,31 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         // Get the Earthquake object located at this position in the list.
         Earthquake currentEarthquake = getItem(position);
 
-        // Create a new Date object from the time in milliseconds of the earthquake
+        // Get the original location string from the Earthquake object and
+        // split it to 2 TextView (location_offset and primary_location) by using split() method.
+        String originalLocation = currentEarthquake.getLocation();
+        String locationOffset;
+        String primaryLocation;
+        if (originalLocation.contains(LOCATION_SEPARATOR)) {
+            String[] parts = originalLocation.split(LOCATION_SEPARATOR);
+            locationOffset = parts[0] + LOCATION_SEPARATOR;
+            primaryLocation = parts[1];
+        } else {
+            locationOffset = getContext().getString(R.string.near_the);
+            primaryLocation = originalLocation;
+        }
+
+        // Create a new Date object from the time in milliseconds of the earthquake.
         Date dateObject = new Date(currentEarthquake.getTimeInMilliseconds());
-        // Format the date string (i.e. "Mar 3, 1984")
+        // Format the date string (i.e. "Mar 3, 1984").
         String formattedDate = formatDate(dateObject);
-        // Format the time string (i.e. "4:30PM")
+        // Format the time string (i.e. "4:30PM").
         String formattedTime = formatTime(dateObject);
 
         // Set proper data in earthquake_list_item by using ViewHolder.
         holder.magnitudeTextView.setText(currentEarthquake.getMagnitude());
-        holder.placeTextView.setText(currentEarthquake.getPlace());
+        holder.locationOffsetTextView.setText(locationOffset);
+        holder.primaryLocationTextView.setText(primaryLocation);
         holder.dateTextView.setText(formattedDate);
         holder.timeTextView.setText(formattedTime);
 

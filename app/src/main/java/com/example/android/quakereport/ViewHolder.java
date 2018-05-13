@@ -10,7 +10,8 @@ import android.widget.TextView;
 public class ViewHolder {
 
     public TextView magnitudeTextView;
-    public TextView placeTextView;
+    public TextView locationOffsetTextView;
+    public TextView primaryLocationTextView;
     public TextView dateTextView;
     public TextView timeTextView;
 }
