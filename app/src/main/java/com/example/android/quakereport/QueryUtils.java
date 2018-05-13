@@ -48,19 +48,19 @@ public final class QueryUtils {
         try {
 
             // Convert SAMPLE_JSON_RESPONSE String into a JSONObject
-            JSONObject jsonRootObject = new JSONObject(SAMPLE_JSON_RESPONSE);
+            JSONObject rootJsonObject = new JSONObject(SAMPLE_JSON_RESPONSE);
             // Extract “features” JSONArray
-            JSONArray jsonFeaturesArray = jsonRootObject.optJSONArray("features");
+            JSONArray earthquakeArray = rootJsonObject.optJSONArray("features");
             // Loop through each feature in the array
-            for(int i = 0; i < jsonFeaturesArray.length(); i++) {
+            for(int i = 0; i < earthquakeArray.length(); i++) {
                 // Get earthquake JSONObject at position i
-                JSONObject jsonEarthquakeObject = jsonFeaturesArray.getJSONObject(i);
+                JSONObject currentEarthquake = earthquakeArray.getJSONObject(i);
                 // Get “properties” JSONObject
-                JSONObject jsonPropertiesObject = jsonEarthquakeObject.getJSONObject("properties");
+                JSONObject properties = currentEarthquake.getJSONObject("properties");
                 // Extract “mag”, "place", "time"
-                String magnitude = jsonPropertiesObject.optString("mag");
-                String place = jsonPropertiesObject.optString("place");
-                String time = jsonPropertiesObject.optString("time");
+                String magnitude = properties.getString("mag");
+                String place = properties.getString("place");
+                String time = properties.getString("time");
                 // Create Earthquake java object from magnitude, location, and time
                 Earthquake earthquake = new Earthquake(magnitude, place, time);
                 // Add earthquake to list of earthquakes

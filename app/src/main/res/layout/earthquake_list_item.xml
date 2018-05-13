@@ -23,7 +23,7 @@
         tools:text="Place" />
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"

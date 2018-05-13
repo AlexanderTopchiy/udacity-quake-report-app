@@ -49,7 +49,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
             holder = new ViewHolder();
             holder.magnitudeTextView = convertView.findViewById(R.id.magnitude);
             holder.placeTextView = convertView.findViewById(R.id.place);
-            holder.dateTextView = convertView.findViewById(R.id.date);
+            holder.dateTextView = convertView.findViewById(R.id.time);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
